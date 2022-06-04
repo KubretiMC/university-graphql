@@ -3,7 +3,7 @@ import { ObjectId } from "mongodb";
 import { Field, InputType } from "type-graphql";
 
 @InputType()
-export class CreateAddressInput {
+export class CreateUserInput {
 
 
     @MaxLength(30)
@@ -21,18 +21,11 @@ export class CreateAddressInput {
     @MaxLength(20)
     @Field()
     country: string;
-
-    @Field()
-    shippingAddress: boolean;
-
-    @MaxLength(20)
-    @Field()
-    city: string;
 }
 
 
 @InputType()
-export class BaseAddressInput {
+export class BaseUserInput {
 
     @MaxLength(30)
     @Field({ nullable: true })
@@ -49,18 +42,10 @@ export class BaseAddressInput {
     @MaxLength(20)
     @Field({ nullable: true })
     country?: string;
-
-
-    @MaxLength(20)
-    @Field({ nullable: true })
-    city?: string;
-
-    @Field({ nullable: true })
-    shippingAddress?: boolean;
 }
 
 @InputType()
-export class AddressInput extends BaseAddressInput {
+export class UserInput extends BaseUserInput {
     @Field()
     _id: ObjectId;
 }

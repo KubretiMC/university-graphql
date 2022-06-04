@@ -9,49 +9,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EditOrderInput = exports.CreateOrderInput = void 0;
+exports.EditMessageInput = exports.CreateMessageInput = void 0;
 const class_validator_1 = require("class-validator");
 const type_graphql_1 = require("type-graphql");
-const address_params_1 = require("./address-params");
-let CreateOrderInput = class CreateOrderInput {
+const user_params_1 = require("./user-params");
+let CreateMessageInput = class CreateMessageInput {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
     (0, class_validator_1.MaxLength)(10),
     __metadata("design:type", String)
-], CreateOrderInput.prototype, "orderNumber", void 0);
+], CreateMessageInput.prototype, "messageNumber", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], CreateOrderInput.prototype, "createdBy", void 0);
+], CreateMessageInput.prototype, "createdBy", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
-    __metadata("design:type", Number)
-], CreateOrderInput.prototype, "total", void 0);
-CreateOrderInput = __decorate([
+    __metadata("design:type", String)
+], CreateMessageInput.prototype, "message", void 0);
+CreateMessageInput = __decorate([
     (0, type_graphql_1.InputType)()
-], CreateOrderInput);
-exports.CreateOrderInput = CreateOrderInput;
-let EditOrderInput = class EditOrderInput {
+], CreateMessageInput);
+exports.CreateMessageInput = CreateMessageInput;
+let EditMessageInput = class EditMessageInput {
 };
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     (0, class_validator_1.MaxLength)(10),
     __metadata("design:type", String)
-], EditOrderInput.prototype, "orderNumber", void 0);
+], EditMessageInput.prototype, "messageNumber", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], EditOrderInput.prototype, "createdBy", void 0);
+], EditMessageInput.prototype, "createdBy", void 0);
 __decorate([
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
-], EditOrderInput.prototype, "total", void 0);
+], EditMessageInput.prototype, "message", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(type => [address_params_1.AddressInput]),
+    (0, type_graphql_1.Field)(type => [user_params_1.UserInput]),
     __metadata("design:type", Array)
-], EditOrderInput.prototype, "addresses", void 0);
-EditOrderInput = __decorate([
+], EditMessageInput.prototype, "users", void 0);
+EditMessageInput = __decorate([
     (0, type_graphql_1.InputType)()
-], EditOrderInput);
-exports.EditOrderInput = EditOrderInput;
+], EditMessageInput);
+exports.EditMessageInput = EditMessageInput;

@@ -3,48 +3,24 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-type Address {
-  _id: ObjectId!
-  address: String!
-  city: String!
-  country: String!
-  firstName: String!
-  lastName: String!
-  shippingAddress: Boolean!
-}
-
-input AddressInput {
-  _id: ObjectId!
+input BaseUserInput {
   address: String
-  city: String
   country: String
   firstName: String
   lastName: String
-  shippingAddress: Boolean
 }
 
-input BaseAddressInput {
-  address: String
-  city: String
-  country: String
-  firstName: String
-  lastName: String
-  shippingAddress: Boolean
-}
-
-input CreateAddressInput {
-  address: String!
-  city: String!
-  country: String!
-  firstName: String!
-  lastName: String!
-  shippingAddress: Boolean!
-}
-
-input CreateOrderInput {
+input CreateMessageInput {
   createdBy: String!
-  orderNumber: String!
-  total: Float!
+  message: String!
+  messageNumber: String!
+}
+
+input CreateUserInput {
+  address: String!
+  country: String!
+  firstName: String!
+  lastName: String!
 }
 
 """
@@ -52,37 +28,53 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
-input EditOrderInput {
-  addresses: [AddressInput!]!
+input EditMessageInput {
   createdBy: String
-  orderNumber: String
-  total: Float
+  message: Float
+  messageNumber: String
+  users: [UserInput!]!
+}
+
+type Message {
+  _id: ObjectId!
+  createdBy: String!
+  createdOn: DateTime!
+  message: String!
+  messageNumber: String!
+  users: [User!]!
 }
 
 type Mutation {
-  createAddress(data: CreateAddressInput!): Address!
-  createOrder(data: CreateOrderInput!): Order!
-  deleteAddress(_id: String!): Address!
-  deleteOrder(_id: String!): Order!
-  editAddress(_id: String!, data: BaseAddressInput!): Address!
-  editOrder(_id: String!, data: EditOrderInput!): Order!
+  createMessage(data: CreateMessageInput!): Message!
+  createUser(data: CreateUserInput!): User!
+  deleteMessage(_id: String!): Message!
+  deleteUser(_id: String!): User!
+  editMessage(_id: String!, data: EditMessageInput!): Message!
+  editUser(_id: String!, data: BaseUserInput!): User!
 }
 
 """Mongo object id scalar type"""
 scalar ObjectId
 
-type Order {
-  _id: ObjectId!
-  addresses: [Address!]!
-  createdBy: String!
-  createdOn: DateTime!
-  orderNumber: String!
-  total: Float!
+type Query {
+  message(_id: String!): Message!
+  messages: [Message!]!
+  user(_id: String!): User!
+  users: [User!]!
 }
 
-type Query {
-  address(_id: String!): Address!
-  addresses: [Address!]!
-  order(_id: String!): Order!
-  orders: [Order!]!
+type User {
+  _id: ObjectId!
+  address: String!
+  country: String!
+  firstName: String!
+  lastName: String!
+}
+
+input UserInput {
+  _id: ObjectId!
+  address: String
+  country: String
+  firstName: String
+  lastName: String
 }

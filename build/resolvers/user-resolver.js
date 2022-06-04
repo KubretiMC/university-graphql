@@ -12,66 +12,66 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddressResolver = void 0;
+exports.UserResolver = void 0;
 const type_graphql_1 = require("type-graphql");
-const address_entity_1 = require("../entities/address-entity");
-const address_params_1 = require("./address-params");
-let AddressResolver = class AddressResolver {
-    async addresses() {
-        return await address_entity_1.AddressModel.find({});
+const user_entity_1 = require("../entities/user-entity");
+const user_params_1 = require("./user-params");
+let UserResolver = class UserResolver {
+    async users() {
+        return await user_entity_1.UserModel.find({});
     }
-    async address(_id) {
-        return await address_entity_1.AddressModel.findById(_id);
+    async user(_id) {
+        return await user_entity_1.UserModel.findById(_id);
     }
-    async createAddress(data) {
-        const newAddress = new address_entity_1.AddressModel(data);
-        await newAddress.save();
-        return newAddress;
+    async createUser(data) {
+        const newUser = new user_entity_1.UserModel(data);
+        await newUser.save();
+        return newUser;
     }
-    async deleteAddress(_id) {
-        const deltedAddress = await address_entity_1.AddressModel.findByIdAndRemove(_id);
-        return deltedAddress;
+    async deleteUser(_id) {
+        const deltedUser = await user_entity_1.UserModel.findByIdAndRemove(_id);
+        return deltedUser;
     }
-    async editAddress(_id, data) {
-        return address_entity_1.AddressModel.findByIdAndUpdate(_id, data, { new: true });
+    async editUser(_id, data) {
+        return user_entity_1.UserModel.findByIdAndUpdate(_id, data, { new: true });
     }
 };
 __decorate([
-    (0, type_graphql_1.Query)(returns => [address_entity_1.Address]),
+    (0, type_graphql_1.Query)(returns => [user_entity_1.User]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], AddressResolver.prototype, "addresses", null);
+], UserResolver.prototype, "users", null);
 __decorate([
-    (0, type_graphql_1.Query)(returns => address_entity_1.Address),
+    (0, type_graphql_1.Query)(returns => user_entity_1.User),
     __param(0, (0, type_graphql_1.Arg)("_id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], AddressResolver.prototype, "address", null);
+], UserResolver.prototype, "user", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(returns => address_entity_1.Address),
+    (0, type_graphql_1.Mutation)(returns => user_entity_1.User),
     __param(0, (0, type_graphql_1.Arg)("data")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [address_params_1.CreateAddressInput]),
+    __metadata("design:paramtypes", [user_params_1.CreateUserInput]),
     __metadata("design:returntype", Promise)
-], AddressResolver.prototype, "createAddress", null);
+], UserResolver.prototype, "createUser", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(returns => address_entity_1.Address),
+    (0, type_graphql_1.Mutation)(returns => user_entity_1.User),
     __param(0, (0, type_graphql_1.Arg)("_id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], AddressResolver.prototype, "deleteAddress", null);
+], UserResolver.prototype, "deleteUser", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(returns => address_entity_1.Address),
+    (0, type_graphql_1.Mutation)(returns => user_entity_1.User),
     __param(0, (0, type_graphql_1.Arg)("_id")),
     __param(1, (0, type_graphql_1.Arg)("data")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, address_params_1.BaseAddressInput]),
+    __metadata("design:paramtypes", [String, user_params_1.BaseUserInput]),
     __metadata("design:returntype", Promise)
-], AddressResolver.prototype, "editAddress", null);
-AddressResolver = __decorate([
+], UserResolver.prototype, "editUser", null);
+UserResolver = __decorate([
     (0, type_graphql_1.Resolver)()
-], AddressResolver);
-exports.AddressResolver = AddressResolver;
+], UserResolver);
+exports.UserResolver = UserResolver;

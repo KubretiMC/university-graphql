@@ -1,33 +1,33 @@
 import { MaxLength } from "class-validator";
 import { Field, InputType } from "type-graphql";
-import { AddressInput } from "./address-params";
+import { UserInput } from "./user-params";
 
 @InputType()
-export class CreateOrderInput {
+export class CreateMessageInput {
     @Field()
     @MaxLength(10)
-    orderNumber: string;
+    messageNumber: string;
 
     @Field()
     createdBy: string;
 
     @Field()
-    total: number;
+    message: string;
 }
 
 
 @InputType()
-export class EditOrderInput {
+export class EditMessageInput {
     @Field({ nullable: true })
     @MaxLength(10)
-    orderNumber?: string;
+    messageNumber?: string;
 
     @Field({ nullable: true })
     createdBy?: string;
 
     @Field({ nullable: true })
-    total?: number;
+    message?: number;
 
-    @Field(type => [AddressInput])
-    addresses?: AddressInput[]
+    @Field(type => [UserInput])
+    users?: UserInput[]
 }

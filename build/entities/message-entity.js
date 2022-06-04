@@ -9,48 +9,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddressModel = exports.Address = void 0;
+exports.MessageModel = exports.Message = void 0;
 const type_graphql_1 = require("type-graphql");
 const typegoose_1 = require("@typegoose/typegoose");
 const mongodb_1 = require("mongodb");
-let Address = class Address {
+const user_entity_1 = require("./user-entity");
+let Message = class Message {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", mongodb_1.ObjectId)
-], Address.prototype, "_id", void 0);
+], Message.prototype, "_id", void 0);
+__decorate([
+    (0, typegoose_1.prop)({ required: true, default: new Date() }),
+    (0, type_graphql_1.Field)(),
+    __metadata("design:type", Date)
+], Message.prototype, "createdOn", void 0);
 __decorate([
     (0, typegoose_1.prop)({ required: true }),
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], Address.prototype, "firstName", void 0);
+], Message.prototype, "createdBy", void 0);
 __decorate([
     (0, typegoose_1.prop)({ required: true }),
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], Address.prototype, "lastName", void 0);
+], Message.prototype, "messageNumber", void 0);
 __decorate([
     (0, typegoose_1.prop)({ required: true }),
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], Address.prototype, "address", void 0);
+], Message.prototype, "message", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ required: true }),
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], Address.prototype, "country", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ required: true }),
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], Address.prototype, "city", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ required: true, default: true }),
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", Boolean)
-], Address.prototype, "shippingAddress", void 0);
-Address = __decorate([
+    (0, type_graphql_1.Field)(type => [user_entity_1.User]),
+    (0, typegoose_1.prop)({ default: [] }),
+    __metadata("design:type", Array)
+], Message.prototype, "users", void 0);
+Message = __decorate([
+    (0, typegoose_1.modelOptions)({ options: { allowMixed: typegoose_1.Severity.ALLOW } }),
     (0, type_graphql_1.ObjectType)()
-], Address);
-exports.Address = Address;
-exports.AddressModel = (0, typegoose_1.getModelForClass)(Address, { schemaOptions: { timestamps: true } });
+], Message);
+exports.Message = Message;
+exports.MessageModel = (0, typegoose_1.getModelForClass)(Message, { schemaOptions: { timestamps: true } });

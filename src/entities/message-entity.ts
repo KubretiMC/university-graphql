@@ -1,13 +1,13 @@
 import { ObjectType, Field } from "type-graphql";
 import { prop as Prop, getModelForClass, modelOptions, Severity } from "@typegoose/typegoose";
 import { ObjectId } from "mongodb";
-import { Address } from "./address-entity";
+import { User } from "./user-entity";
 
 
 @modelOptions({ options: { allowMixed: Severity.ALLOW } })
 
 @ObjectType()
-export class Order {
+export class Message {
 
 
     @Field()
@@ -23,15 +23,15 @@ export class Order {
 
     @Prop({ required: true })
     @Field()
-    orderNumber: string;
+    messageNumber: string;
 
     @Prop({ required: true })
     @Field()
-    total: number;
+    message: string;
 
-    @Field(type => [Address])
+    @Field(type => [User])
     @Prop({ default: [] })
-    addresses?: Address[]
+    users?: User[]
 }
 
-export const OrderModel = getModelForClass(Order, { schemaOptions: { timestamps: true } });
+export const MessageModel = getModelForClass(Message, { schemaOptions: { timestamps: true } });

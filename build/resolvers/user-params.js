@@ -9,87 +9,69 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddressInput = exports.BaseAddressInput = exports.CreateAddressInput = void 0;
+exports.UserInput = exports.BaseUserInput = exports.CreateUserInput = void 0;
 const class_validator_1 = require("class-validator");
 const mongodb_1 = require("mongodb");
 const type_graphql_1 = require("type-graphql");
-let CreateAddressInput = class CreateAddressInput {
+let CreateUserInput = class CreateUserInput {
 };
 __decorate([
     (0, class_validator_1.MaxLength)(30),
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], CreateAddressInput.prototype, "firstName", void 0);
+], CreateUserInput.prototype, "firstName", void 0);
 __decorate([
     (0, class_validator_1.MaxLength)(30),
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], CreateAddressInput.prototype, "lastName", void 0);
+], CreateUserInput.prototype, "lastName", void 0);
 __decorate([
     (0, class_validator_1.MaxLength)(255),
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], CreateAddressInput.prototype, "address", void 0);
+], CreateUserInput.prototype, "address", void 0);
 __decorate([
     (0, class_validator_1.MaxLength)(20),
     (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
-], CreateAddressInput.prototype, "country", void 0);
-__decorate([
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", Boolean)
-], CreateAddressInput.prototype, "shippingAddress", void 0);
-__decorate([
-    (0, class_validator_1.MaxLength)(20),
-    (0, type_graphql_1.Field)(),
-    __metadata("design:type", String)
-], CreateAddressInput.prototype, "city", void 0);
-CreateAddressInput = __decorate([
+], CreateUserInput.prototype, "country", void 0);
+CreateUserInput = __decorate([
     (0, type_graphql_1.InputType)()
-], CreateAddressInput);
-exports.CreateAddressInput = CreateAddressInput;
-let BaseAddressInput = class BaseAddressInput {
+], CreateUserInput);
+exports.CreateUserInput = CreateUserInput;
+let BaseUserInput = class BaseUserInput {
 };
 __decorate([
     (0, class_validator_1.MaxLength)(30),
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], BaseAddressInput.prototype, "firstName", void 0);
+], BaseUserInput.prototype, "firstName", void 0);
 __decorate([
     (0, class_validator_1.MaxLength)(30),
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], BaseAddressInput.prototype, "lastName", void 0);
+], BaseUserInput.prototype, "lastName", void 0);
 __decorate([
     (0, class_validator_1.MaxLength)(255),
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], BaseAddressInput.prototype, "address", void 0);
+], BaseUserInput.prototype, "address", void 0);
 __decorate([
     (0, class_validator_1.MaxLength)(20),
     (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], BaseAddressInput.prototype, "country", void 0);
-__decorate([
-    (0, class_validator_1.MaxLength)(20),
-    (0, type_graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", String)
-], BaseAddressInput.prototype, "city", void 0);
-__decorate([
-    (0, type_graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", Boolean)
-], BaseAddressInput.prototype, "shippingAddress", void 0);
-BaseAddressInput = __decorate([
+], BaseUserInput.prototype, "country", void 0);
+BaseUserInput = __decorate([
     (0, type_graphql_1.InputType)()
-], BaseAddressInput);
-exports.BaseAddressInput = BaseAddressInput;
-let AddressInput = class AddressInput extends BaseAddressInput {
+], BaseUserInput);
+exports.BaseUserInput = BaseUserInput;
+let UserInput = class UserInput extends BaseUserInput {
 };
 __decorate([
     (0, type_graphql_1.Field)(),
     __metadata("design:type", mongodb_1.ObjectId)
-], AddressInput.prototype, "_id", void 0);
-AddressInput = __decorate([
+], UserInput.prototype, "_id", void 0);
+UserInput = __decorate([
     (0, type_graphql_1.InputType)()
-], AddressInput);
-exports.AddressInput = AddressInput;
+], UserInput);
+exports.UserInput = UserInput;

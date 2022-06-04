@@ -3,7 +3,7 @@ import { getModelForClass, prop as Prop } from "@typegoose/typegoose";
 import { ObjectId } from "mongodb";
 
 @ObjectType()
-export class Address {
+export class User {
     @Field()
     readonly _id: ObjectId;
 
@@ -22,16 +22,6 @@ export class Address {
     @Prop({ required: true })
     @Field()
     country: string;
-
-
-    @Prop({ required: true })
-    @Field()
-    city: string;
-
-    @Prop({ required: true, default: true })
-    @Field()
-    shippingAddress: boolean;
-
 }
 
-export const AddressModel = getModelForClass(Address, { schemaOptions: { timestamps: true } });
+export const UserModel = getModelForClass(User, { schemaOptions: { timestamps: true } });

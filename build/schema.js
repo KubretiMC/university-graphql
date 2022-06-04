@@ -25,15 +25,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSchema = void 0;
 const type_graphql_1 = require("type-graphql");
-const order_resolver_1 = require("./resolvers/order-resolver");
+const message_resolver_1 = require("./resolvers/message-resolver");
 const typegoose_midleware_1 = require("./typegoose-midleware");
 const path = __importStar(require("path"));
 const mongodb_1 = require("mongodb");
 const object_id_scalar_1 = require("./object-id.scalar");
-const address_resolver_1 = require("./resolvers/address-resolver");
+const user_resolver_1 = require("./resolvers/user-resolver");
 const getSchema = async () => {
     const schema = await (0, type_graphql_1.buildSchema)({
-        resolvers: [order_resolver_1.OrderResolver, address_resolver_1.AddressResolver],
+        resolvers: [message_resolver_1.MessageResolver, user_resolver_1.UserResolver],
         emitSchemaFile: path.resolve(__dirname, "schema.gql"),
         // use document converting middleware
         globalMiddlewares: [typegoose_midleware_1.TypegooseMiddleware],

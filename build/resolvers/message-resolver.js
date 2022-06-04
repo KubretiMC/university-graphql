@@ -12,66 +12,66 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OrderResolver = void 0;
+exports.MessageResolver = void 0;
 const type_graphql_1 = require("type-graphql");
-const order_entity_1 = require("../entities/order-entity");
-const order_params_1 = require("./order-params");
-let OrderResolver = class OrderResolver {
-    async orders() {
-        return await order_entity_1.OrderModel.find({});
+const message_entity_1 = require("../entities/message-entity");
+const message_params_1 = require("./message-params");
+let MessageResolver = class MessageResolver {
+    async messages() {
+        return await message_entity_1.MessageModel.find({});
     }
-    async order(_id) {
-        return await order_entity_1.OrderModel.findById(_id);
+    async message(_id) {
+        return await message_entity_1.MessageModel.findById(_id);
     }
-    async createOrder(data) {
-        const newOrder = new order_entity_1.OrderModel(data);
-        await newOrder.save();
-        return newOrder;
+    async createMessage(data) {
+        const newMessage = new message_entity_1.MessageModel(data);
+        await newMessage.save();
+        return newMessage;
     }
-    async deleteOrder(_id) {
-        const deltedOrder = await order_entity_1.OrderModel.findByIdAndRemove(_id);
-        return deltedOrder;
+    async deleteMessage(_id) {
+        const deletedMessage = await message_entity_1.MessageModel.findByIdAndRemove(_id);
+        return deletedMessage;
     }
-    async editOrder(_id, data) {
-        return order_entity_1.OrderModel.findByIdAndUpdate(_id, data, { new: true });
+    async editMessage(_id, data) {
+        return message_entity_1.MessageModel.findByIdAndUpdate(_id, data, { new: true });
     }
 };
 __decorate([
-    (0, type_graphql_1.Query)(returns => [order_entity_1.Order]),
+    (0, type_graphql_1.Query)(returns => [message_entity_1.Message]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], OrderResolver.prototype, "orders", null);
+], MessageResolver.prototype, "messages", null);
 __decorate([
-    (0, type_graphql_1.Query)(returns => order_entity_1.Order),
+    (0, type_graphql_1.Query)(returns => message_entity_1.Message),
     __param(0, (0, type_graphql_1.Arg)("_id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], OrderResolver.prototype, "order", null);
+], MessageResolver.prototype, "message", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(returns => order_entity_1.Order),
+    (0, type_graphql_1.Mutation)(returns => message_entity_1.Message),
     __param(0, (0, type_graphql_1.Arg)("data")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [order_params_1.CreateOrderInput]),
+    __metadata("design:paramtypes", [message_params_1.CreateMessageInput]),
     __metadata("design:returntype", Promise)
-], OrderResolver.prototype, "createOrder", null);
+], MessageResolver.prototype, "createMessage", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(returns => order_entity_1.Order),
+    (0, type_graphql_1.Mutation)(returns => message_entity_1.Message),
     __param(0, (0, type_graphql_1.Arg)("_id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], OrderResolver.prototype, "deleteOrder", null);
+], MessageResolver.prototype, "deleteMessage", null);
 __decorate([
-    (0, type_graphql_1.Mutation)(returns => order_entity_1.Order),
+    (0, type_graphql_1.Mutation)(returns => message_entity_1.Message),
     __param(0, (0, type_graphql_1.Arg)("_id")),
     __param(1, (0, type_graphql_1.Arg)("data")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, order_params_1.EditOrderInput]),
+    __metadata("design:paramtypes", [String, message_params_1.EditMessageInput]),
     __metadata("design:returntype", Promise)
-], OrderResolver.prototype, "editOrder", null);
-OrderResolver = __decorate([
+], MessageResolver.prototype, "editMessage", null);
+MessageResolver = __decorate([
     (0, type_graphql_1.Resolver)()
-], OrderResolver);
-exports.OrderResolver = OrderResolver;
+], MessageResolver);
+exports.MessageResolver = MessageResolver;
